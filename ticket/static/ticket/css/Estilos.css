@@ -1,0 +1,11 @@
+#pdfViewer {
+    overflow: auto; /* Permite desplazamiento si el contenido es más grande */
+    max-height: 500px; /* Altura máxima del visor */
+    width: 100%; /* Ancho completo */
+    border: 1px solid #ccc; /* Opcional: para visualizar el borde del visor */
+}
+
+#pdfCanvas {
+    width: 100%; /* Asegura que el canvas use todo el ancho del modal */
+    height: auto; /* Mantiene la proporción del canvas */
+}

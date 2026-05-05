@@ -1,0 +1,72 @@
+
+    {% load static %}
+    
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #3e419a;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'index' %}">
+           <img src="{% static 'img/logo-inr.png' %}" alt="" width="262" height="48" class="d-inline-block align-text-top">
+        </a>
+        <p class="h2 text-light mx-5"> miCertificado</p>
+
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- MENU: INICIO -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+
+
+            {% if user.is_authenticated %}
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Consulta
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'consulta.lista_certificados' %}">Certificados disponibles.</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                </ul>
+            </li>
+            
+                {% if user.is_staff %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Administrar
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'administra.lista_cursos' %}">Cursos</a></li>
+                    <li><a class="dropdown-item" href="{% url 'administra.lista_personas' %}">Personas</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                </ul>
+            </li>
+                {% endif %} 
+
+
+            {% endif %} 
+        </ul>
+        <!-- MENU: FIN -->
+
+        {% if user.is_authenticated %}
+        <span class="text-light">({{ user.get_username }}) {{ user.first_name }} {{ user.last_name }}</span>
+        <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+            {% csrf_token %}
+        </form>
+        <a class="nav-link text-light" href="#" onclick="document.getElementById('logout-form').submit(); return false;">
+            &nbsp;
+            <img src="{% static 'img/logout_white_24dp.svg' %}" />
+        </a>
+        {% else %}
+        <a class="nav-link text-light" href="{% url 'login' %}?next={{request.path}}">
+            <img src="{% static 'img/person_outline_white_24dp.svg' %}" />
+            Iniciar sesión
+        </a>
+        {% endif %} 
+    </div>
+
+      </div>
+    </nav>
