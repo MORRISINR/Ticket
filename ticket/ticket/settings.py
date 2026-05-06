@@ -39,9 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_bootstrap5',
+    # 'ticket',
+    'users',
+    # 'workers',
 ]
 
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'users.Usuario'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

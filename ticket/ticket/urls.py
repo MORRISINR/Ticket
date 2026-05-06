@@ -24,4 +24,5 @@ urlpatterns = [
     path('ticket/accounts/', include('django.contrib.auth.urls')),
     # path('ticket/consulta/', include('consulta.urls')),
     # path('ticket/administra/', include('administra.urls')),
+    path('ticket/usuarios/', include('users.urls')),
 ]
