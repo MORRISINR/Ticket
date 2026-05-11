@@ -9,3 +9,19 @@
     width: 100%; /* Asegura que el canvas use todo el ancho del modal */
     height: auto; /* Mantiene la proporción del canvas */
 }
+
+.primary-color {
+    background-color: #3e419a;
+}
+
+.btn-institucional{
+    background-color: #3e419a;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+.btn-institucional:hover{
+    background-color: #4d509e;
+    color: white;
+}

@@ -89,25 +89,25 @@ def enviar_correo(subject, body, to_email,
         msg.attach(MIMEText(html_body if html_body else body, 'html'))
 
     try:
-        print("📨 Enviando correo a:", to_email)
+        print(" Enviando correo a:", to_email)
 
         with smtplib.SMTP(settings.EMAIL_HOST, settings.EMAIL_PORT) as server:
-            server.set_debuglevel(1)  # 👈 muestra todo el proceso SMTP
+            server.set_debuglevel(1)  #  muestra todo el proceso SMTP
             server.starttls()
 
-            print("🔐 Iniciando login SMTP...")
+            print(" Iniciando login SMTP...")
             server.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
 
-            print("📤 Enviando mensaje...")
+            print(" Enviando mensaje...")
             response = server.sendmail(
                 from_email,
                 [to_email] if isinstance(to_email, str) else to_email,
                 msg.as_string()
             )
 
-            print("📬 Respuesta SMTP:", response)
+            print(" Respuesta SMTP:", response)
 
-        print("✅ Correo enviado correctamente")
+        print(" Correo enviado correctamente")
 
     except Exception as e:
-        raise Exception(f"❌ Error sending email: {e}")
+        raise Exception(f" Error sending email: {e}")

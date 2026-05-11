@@ -1,37 +1,46 @@
 {% extends "password_page.html" %}
 
 {% block password_content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h2 class="text-center mb-4">Iniciar sesión</h2>
+            <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
 
-  <form method="post" action="{% url 'login' %}">
-  {% csrf_token %}
+              <div class="mb-3">
+                <label for="id_username" class="col-form-label">Nombre de usuario</label>
+                <input type="text" class="form-control" name="username" id="id_username" required autofocus>
+              </div>
 
-    <div class="mb-3">
-      <label for="id_username" class="col-form-label">Nombre de usuario</label>
-      <input type="text" class="form-control" name="username" id="id_username" required autofocus>
+              <div class="mb-3">
+                <label for="id_password" class="col-form-label">Contraseña</label>
+                <input type="password" class="form-control" name="password" id="id_password" required >
+                <br />
+                <figure class="text-end">
+                  <figcaption class="blockquote-footer">
+                    <a href="{% url 'password_reset' %}">¿Olvidé mi contraseña?</a>
+                  </figcaption>
+                </figure>
+              </div>
+
+              <div class="mb-3">
+                {% if form.errors %}
+                <p class="text-danger">El nombre de usuario o la contraseña no son correctos. Vuelve a introducirlos.</p>
+                {% endif %}
+              </div>
+
+              <div class="mb-3">
+                <input type="submit" class="btn btn-primary" value="Iniciar sesión" />
+                <input type="hidden" name="next" value="{{ next }}" />
+              </div>
+
+            </form>
+        </div>
+      </div>
     </div>
-
-    <div class="mb-3">
-      <label for="id_password" class="col-form-label">Contraseña</label>
-      <input type="password" class="form-control" name="password" id="id_password" required >
-      <br />
-      <figure class="text-end">
-        <figcaption class="blockquote-footer">
-          <a href="{% url 'password_reset' %}">¿Olvidé mi contraseña?</a>
-        </figcaption>
-      </figure>
-    </div>
-
-    <div class="mb-3">
-      {% if form.errors %}
-      <p class="text-danger">El nombre de usuario o la contraseña no son correctos. Vuelve a introducirlos.</p>
-      {% endif %}
-    </div>
-
-    <div class="mb-3">
-      <input type="submit" class="btn btn-primary" value="Iniciar sesión" />
-      <input type="hidden" name="next" value="{{ next }}" />
-    </div>
-
-  </form>
-
+  </div>
+</div>
 {% endblock %}

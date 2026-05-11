@@ -1,7 +1,44 @@
 {% extends "master_page.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row align-items-center">
+		
+		<div class="col-md-6">
+			<h1 class="fw-bold mb-4">
+				Sistema de Gestión
+			</h1>
+
+			<p class="text-muted fs-5">
+				Plataforma institucional para administración y control de incidencias de soporte informático.
+			</p>
+
+			<a href="{% url 'login' %}?next={{request.path}}" 
+			class="btn btn-lg mt-3 btn-institucional">
+				Ingresar al Sistema
+			</a>
+		</div>
+
+        <div class="col-md-6 mt-4">
+            <img src="{% static 'img/frontis-inr.png' %}" 
+                 class="img-fluid rounded shadow"
+                 alt="Frontis INR">
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% comment %} {% extends "master_page.html" %}
 
 {% block content %}
 	{% load static %}
 	<img src="{% static 'img/frontis-inr.png' %}" alt="" width="100%" height="100%" class="d-inline-block align-text-top">
 
-{% endblock %}
+{% endblock %} {% endcomment %}
